@@ -1,6 +1,6 @@
 import { AuthRequest } from "../middlewares/auth.js";
 import { Response } from "express";
-import { Restaurant } from "../models/Restaruant.js";
+import { Restaurant } from "../models/Restaurant.js";
 import {v2 as cloudinary } from 'cloudinary'
 import { Booking } from "../models/Booking.js";
 

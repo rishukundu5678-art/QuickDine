@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { AuthRequest } from "../middlewares/auth.js";
-import { Restaurant } from "../models/Restaruant.js";
+import { Restaurant } from "../models/Restaurant.js";
 import { Booking } from "../models/Booking.js";
 
 // Create a new booking
@@ -22,8 +22,8 @@ export const createBooking=async (req:AuthRequest,res:Response):Promise<void> =>
             return;
         }
 
-        // Check Restaurant is verifed or not
-        if(restaurant.status !=="Approved")
+        // Check Restaurant is verified or not
+        if(restaurant.status !=="approved")
         {
             res.status(400).json({message:"Reservations are not open for this restaurant yet"});
             return;

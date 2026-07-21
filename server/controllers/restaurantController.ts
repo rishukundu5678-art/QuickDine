@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Restaurant } from "../models/Restaruant.js";
+import { Restaurant } from "../models/Restaurant.js";
 import jwt from 'jsonwebtoken';
 import { User } from "../models/User.js";
 import { decode } from "node:punycode";
@@ -13,9 +13,9 @@ export const getRestaurants=async (req:Request ,res:Response):Promise<void> =>{
 
         const{ search ,priceRange ,rating ,location ,sort} =req.query;
 
-        // Build qurey object
+        // Build query object
 
-        const queryObj:any ={status:"Approved"};
+        const queryObj:any ={status:"approved"};
 
         if(search)
         {
@@ -71,7 +71,7 @@ export const getFeaturedRestaurants=async (req:Request ,res:Response):Promise<vo
     try{
          
         const featured =await Restaurant.find({
-            status:"Approved",
+            status:"approved",
             $or:[{featured :true},{exclusive: true}]
         }).limit(6)
 
@@ -98,7 +98,7 @@ const restaurant =await Restaurant.findOne({ slug: req.params.slug})
      return;
  }
  // If not approved ,verify authrization (owner or admin)
- if(restaurant.status !=="Approved")
+ if(restaurant.status !=="approved")
  {
     let isAuthorized=false;
     if(req.headers.authorization && req.headers.authorization?.startsWith("Bearer")){

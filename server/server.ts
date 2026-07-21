@@ -6,6 +6,7 @@ import authRouter from "./routes/authRoutes.js";
 import restaurantRouter from "./routes/restaurantRoutes.js";
 import bookingRouter from "./routes/bookingRoutes.js";
 import ownerRouter from "./routes/onwerRoutes.js";
+import adminRouter from "./routes/adminRoutes.js"
 
 
 // console.log(process.env.MONGODB_URI);
@@ -37,6 +38,9 @@ app.use("/api/restaurant",restaurantRouter)
 app.use("/api/bookings",bookingRouter)
 
 app.use("/api/owner",ownerRouter)
+
+app.use("/api/admin",adminRouter)
+
 
 
 // global error handler
