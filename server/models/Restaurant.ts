@@ -17,7 +17,7 @@ export interface IRestaurant extends Document{
     availableSlots:string[];
     featured:boolean;
     exclusive:boolean;
-    status:"Pending" | "Approved" | "Rejected";
+    status:"pending" | "approved" | "rejected";
     totalSeats:number;
     createdAt:Date;
     updatedAt:Date;
@@ -42,7 +42,7 @@ const RestaurantSchema=new Schema<IRestaurant>(
         featured:{type:Boolean, default:false},
         exclusive:{type:Boolean, default:false},
         owner:{type:Schema.Types.ObjectId, ref:"User", requried:true},
-        status:{type:String ,enum: ["Pending", "Approved", "Rejected"] ,default:"Pending"},
+        status:{type:String ,enum: ["pending", "approved", "rejected"] ,default:"pending"},
         totalSeats:{type:Number, default:20},
     },
     {timestamps:true}
