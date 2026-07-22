@@ -50,7 +50,7 @@ export const getAdminStats = async (req: AuthRequest, res: Response): Promise<vo
         const totalUsers = await User.countDocuments({ role: "user"});
         const totalOwners = await User.countDocuments({ role: "owner"});
         const totalBookings = await Booking.countDocuments({});
-        const totalRestaurants = await Restaurant.countDocumens({});
+        const totalRestaurants = await Restaurant.countDocuments({});
 
         //Get latest 10 bookings
         const latestBooking = await Booking.find({}).populate("user", "name email").populate("restaurant", name).sort({createdAr: -1}).limit(10);
@@ -67,8 +67,8 @@ export const getAdminStats = async (req: AuthRequest, res: Response): Promise<vo
                 },
                 bookings: {
                     total: totalBookings,
-                }
-                latestBookings
+                },
+                latestBooking
             }
         )
 
